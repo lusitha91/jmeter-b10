@@ -1,1 +1,1 @@
-"# jmeter-b10" 
+"# JMETER SESSION" 
