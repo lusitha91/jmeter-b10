@@ -21,7 +21,7 @@ jobs:
       uses: ./
       with:
         test-plan-path: ./Day1/${{ github.event.inputs.test-file }}
-        args: "-e -o ./reports/html/ -JUSER=2 -JRAMP=60 -JDURATION=120"
+        args: "-JUSER=2 -JRAMP=60 -JDURATION=120 -e -o ./reports/html/"
         
     - name: Upload Results
       uses: actions/upload-artifact@v4
