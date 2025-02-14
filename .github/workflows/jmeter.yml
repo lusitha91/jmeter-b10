@@ -1,4 +1,4 @@
-name: Run JMeter Test
+name: Run JMeter Test with Taurus
 
 # Controls when the workflow will run
 on:
