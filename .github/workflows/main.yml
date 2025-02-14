@@ -3,9 +3,21 @@ on:
   workflow_dispatch:
     inputs:
       test-file:
-        description: 'Test file name'
+        description: 'Script Name'
         required: true
-        default: 'FirstFinalScript.jmx'  
+        default: 'FirstFinalScript.jmx'
+      users:
+        description: 'users'
+        required: true
+        default: '1'    
+      duration:
+        description: 'Duration'
+        required: true
+        default: '120'
+      rampup:
+        description: 'Ramp up period'
+        required: true
+        default: '10' 
 jobs:
   jmeter_job:
     runs-on: ubuntu-latest
@@ -21,7 +33,7 @@ jobs:
       uses: ./
       with:
         test-plan-path: ./Day1/${{ github.event.inputs.test-file }}
-        args: "-JUSER=2 -JRAMP=60 -JDURATION=120 -e -o ./reports/html/"
+        args: "-JUSER=${{ github.event.inputs.users }} -JRAMP=${{ github.event.inputs.rampup }} -JDURATION=${{ github.event.inputs.duration }} -e -o ./reports/html/"
         
     - name: Upload Results
       uses: actions/upload-artifact@v4
