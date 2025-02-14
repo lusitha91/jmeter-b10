@@ -1,4 +1,10 @@
-on: [push]
+on:
+  workflow_dispatch:
+    inputs:
+      test-file:
+        description: 'Test file name'
+        required: true
+        default: 'FirstFinalScript.jmx'  
 jobs:
   jmeter_job:
     runs-on: ubuntu-latest
@@ -13,7 +19,7 @@ jobs:
     - name: Run JMeter Tests
       uses: ./
       with:
-        test-plan-path: ./Day1/FirstFinalScript.jmx
+        test-plan-path: ./Day1/${{ github.event.inputs.test-file }}
         args: "-e -o ./reports/html/"
         
     - name: Upload Results
